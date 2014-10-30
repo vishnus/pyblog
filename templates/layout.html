@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Musings of a Wandering Mind</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,900italic,400,900&#038;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<div class="page">
+	<div id="header">
+
+	<h1><a href="{{ url_for('show_entries') }}">Musings of a Wandering Mind..</a></h1>
+	<div class="nav">		
+		<a href="http://vishnus.name">Home</a>
+	</div>
+
+	{% for message in get_flashed_messages() %}
+		<div class="flash">{{ message }}</div>
+	{% endfor %}
+
+	</div>
+	{% block body_content %}
+	{% endblock %}
+
+	<div class="footer">
+	<p>Developed by <a href="http://vishnus.name">Vishnu Sudhakaran</a> &copy 2014</p>
+	</div>
+</div>
+</body>
+</html>

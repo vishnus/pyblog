@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block body_content %}
+
+	{% if session.logged_in %}
+		<form action="{{ url_for('add_entry') }}" method="POST" class="add-entry">
+		<strong>New Entry</strong>
+		{% if session.logged_in %}
+			<a style="float: right;" href="{{ url_for('logout') }}">Log out</a>
+		{% endif %}
+		<dl>
+			<dt>Title:</dt>
+			<dd><input type="text" size="70" name="title" /></dd>
+			<dt>Text:</dt>
+			<dd><textarea name="text" rows="10" cols="100"></textarea></dd>
+			<dd><input type="submit" value="Post"></dd>
+		</dl>
+		</form>
+	{% endif %}
+
+	<ul class="entries">
+	{% for entry in entries %}
+		<li class="entry">
+			<h2>{{ entry.title }}</h2> 
+			<p>{{ entry.text|safe }}</p>			
+			<div class="post-meta">Posted on: <i> {{ entry.date|safe }}</i> at <i>{{ entry.time|safe }}</i></div>
+
+		</li>
+	{% else %}
+		<li><em>No Entries yet.. </em>
+	{% endfor %}
+	</ul>
+{% endblock %}
