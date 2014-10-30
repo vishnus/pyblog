@@ -24,12 +24,12 @@ db = SimpleMysql(
 )
 
 
-DEBUG = True # not to be used in production
+DEBUG = True  """ not to be used in production """
 USERNAME = 'admin'
 PASSWORD = 'default' 
-"""
- Since single user, I kept the user details here, you can keep this in separate config file as well
 
+"""
+ Since single user, I kept the user details here, you can keep this in separate config file / database as well
 """
 app = Flask(__name__)
 app.config.from_object(__name__)
